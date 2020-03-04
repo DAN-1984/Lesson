@@ -41,8 +41,9 @@ namespace Lesson_1
             //    await context.Response.WriteAsync("Hello World!!!");
             //});
 
-            app.UseStaticFiles();
-            app.UseDefaultFiles(); // Прочитать про метод
+            //app.UseStaticFiles(); // обрабатывает все запросы к wwwroot
+            //app.UseDefaultFiles(); // с помощью специального метода расширения UseDefaultFiles() можно настроить отправку статических веб-страниц по умолчанию без обращения к ним по полному пути
+            app.UseFileServer(); // объединяет функциональность сразу всех трех вышеописанных методов UseStaticFiles, UseDefaultFiles и UseDirectoryBrowser
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
