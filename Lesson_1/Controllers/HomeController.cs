@@ -50,11 +50,11 @@ namespace Lesson_1.Controllers
         }
         public IActionResult Employee(int id)
         {
-            var employee_1 = _employees.FirstOrDefault(e => e.Id == id);
-            if (employee_1 == null)
+            var employee = _employees.FirstOrDefault(e => e.Id == id);
+            if (employee == null)
                 return NotFound();
             else
-            return View(employee_1);
+            return View(employee);
         }
     }
 }
