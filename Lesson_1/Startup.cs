@@ -32,7 +32,8 @@ namespace Lesson_1
             {
                 app.UseDeveloperExceptionPage();
             }
-            // localhost:5000/?token=12345678
+            // Настройка Middleware для ASP.NET CORE
+            // localhost:5000/?token=12345678 
             //app.UseMiddleware<TokenMiddleware>();
 
             //app.Run(async (context) =>
