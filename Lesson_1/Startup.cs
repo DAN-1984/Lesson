@@ -15,15 +15,16 @@ namespace Lesson_1
     {
         public IConfiguration configuration { get; set; }
 
-        public Startup(IConfiguration configuration) => this.configuration = configuration; 
-        
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public Startup(IConfiguration configuration) => this.configuration = configuration;
+
+        // Этот метод вызывается средой выполнения. Используйте этот метод для добавления служб в контейнер.
+        // Дополнительные сведения о настройке приложения см. На странице https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(); // Для контроллера
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Этот метод вызывается средой выполнения. Используйте этот метод для настройки конвейера HTTP- запросов.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,10 +37,13 @@ namespace Lesson_1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
+                endpoints.MapGet("/greetings", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.MapControllerRoute(
+                    name: "default", 
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
