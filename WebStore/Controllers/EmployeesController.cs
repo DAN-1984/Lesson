@@ -55,6 +55,7 @@ namespace WebStore.Controllers
             return View(employee);
         }
         [HttpPost]
+        //[HttpGet]
         public IActionResult Edit2(int Id, string FirstName, string SurName, string Patronymic, int Age)
         {
             var employee = __Employees.FirstOrDefault(e => e.Id == Id);
