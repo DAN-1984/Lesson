@@ -1,13 +1,13 @@
 ﻿
-@model Employee
+@model EmployeeViewModel
 <div class="container">
     @*@using (Html.BeginForm("Edit2", "EmployeesController", FormMethod.Post))
         {*@
     <form asp-controller="Employees" asp-action="Edit2" asp-route-Id="@Model.Id">
         <label>Имя:</label><br />
-        @Html.TextBoxFor(m => m.FirstName)<br /><br />
+        @Html.TextBoxFor(m => m.Name)<br /><br />
         <label>Фамилия:</label><br />
-        @Html.TextBoxFor(m => m.SurName)<br /><br />
+        @Html.TextBoxFor(m => m.SecondName)<br /><br />
         <label>Отчество:</label><br />
         @Html.TextBoxFor(m => m.Patronymic)<br /><br />
         <label>Возраст:</label><br />
