@@ -4,7 +4,11 @@ namespace WebStore.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index() => View();
+        public IActionResult Index() 
+        {
+            ViewData["title"] = "Главная";
+            return View(); 
+        }
 
         public IActionResult SomeAction() => View();
 
