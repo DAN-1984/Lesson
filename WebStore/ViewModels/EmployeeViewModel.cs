@@ -13,18 +13,27 @@ namespace WebStore.ViewModels
         public int Id { get; set; }
 
         [Display(Name = "Имя")]
-        [Required(ErrorMessage = "Имя является обязательным")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Имя является обязательным")]
         [MinLength(3, ErrorMessage = "Минимальная длина 3 символа")]
+        [StringLength(maximumLength: 20, MinimumLength = 2, ErrorMessage = "Длинна строки от 2 до 20")]
+        [RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата - либо кириллица, латиница")]
         public string Name { get; set; }
 
         [Display(Name = "Фамилия")]
-        [Required(ErrorMessage = "Фамилия является обязательным")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Фамилия является обязательным")]
         [MinLength(3, ErrorMessage = "Минимальная длина 3 символа")]
+        [StringLength(maximumLength: 20, MinimumLength = 2, ErrorMessage = "Длинна строки от 2 до 20")]
+        [RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата - либо кириллица, латиница")]
         public string SecondName { get; set; }
 
         [Display(Name = "Отчество")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Отчество является обязательным")]
+        [StringLength(maximumLength: 20, MinimumLength = 2, ErrorMessage = "Длинна строки от 2 до 20")]
+        [RegularExpression(@"(?:[А-ЯЁ][а-яё]+)|(?:[A-Z][a-z]+)", ErrorMessage = "Ошибка формата - либо кириллица, латиница")]
         public string Patronymic { get; set; }
         
+        [Required(ErrorMessage = "Не указан возраст")]
+        [Range(18, 75, ErrorMessage = "Интервал возраста от 18 до 75 лет")]
         public int Age { get; set; }
     }
 }
