@@ -22,6 +22,7 @@ namespace WebStore
             // AddScoped - один экземпляр на область видимости
             // AddSingleton - один объект на все время жизни приложения
             services.AddSingleton<IEmpoyeesData, InMemoryEmployeesData>();
+            services.AddSingleton<IProductData, InMemoryProductData>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
