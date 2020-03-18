@@ -4,7 +4,7 @@ using WebStore.Data;
 using WebStore.Domain.Entities;
 using WebStore.Infrastructure.Interfaces;
 
-namespace WebStore.Infrastructure.services
+namespace WebStore.Infrastructure.services.InMemory
 {
     public class InMemoryProductData : IProductData
     {

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using WebStore.DAL.Context;
 using WebStore.Data;
 using WebStore.Infrastructure.Interfaces;
-using WebStore.Infrastructure.services;
+using WebStore.Infrastructure.services.InMemory;
 
 namespace WebStore
 {
