@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebStore.DAL.Context;
 
-namespace WebStore.Migrations
+namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WebStoreDB))]
     partial class WebStoreDBModelSnapshot : ModelSnapshot

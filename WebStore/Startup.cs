@@ -21,7 +21,7 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebStoreDB>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("WebStore")));
+                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("WebStore.DAL")));
             services.AddTransient<WebStoreDBInitializer>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -34,7 +34,7 @@ namespace WebStore
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
         {
-            db.Initialize();
+            //db.Initialize();
 
             if (env.IsDevelopment())
             {

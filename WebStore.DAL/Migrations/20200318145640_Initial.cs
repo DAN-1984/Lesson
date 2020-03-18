@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebStore.Migrations
+namespace WebStore.DAL.Migrations
 {
     public partial class Initial : Migration
     {
