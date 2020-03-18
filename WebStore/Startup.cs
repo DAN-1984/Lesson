@@ -9,6 +9,7 @@ using WebStore.DAL.Context;
 using WebStore.Data;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.services.InMemory;
+using WebStore.Infrastructure.services.InSQL;
 
 namespace WebStore
 {
@@ -29,7 +30,8 @@ namespace WebStore
             // AddScoped - один экземпляр на область видимости
             // AddSingleton - один объект на все время жизни приложения
             services.AddSingleton<IEmpoyeesData, InMemoryEmployeesData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            //services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlProductData>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
