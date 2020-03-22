@@ -36,7 +36,7 @@ namespace WebStore
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
         {
-            //db.Initialize();
+            db.Initialize();
 
             if (env.IsDevelopment())
             {

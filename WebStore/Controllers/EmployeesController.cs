@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Data;
 using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Mapping;
 using WebStore.Models;
 using WebStore.ViewModels;
 
@@ -15,29 +16,14 @@ namespace WebStore.Controllers
         private readonly IEmpoyeesData _EmployeesData;
         public EmployeesController(IEmpoyeesData EmployeesData) => _EmployeesData = EmployeesData;
         
-        public IActionResult Index() => View(_EmployeesData.GetAll().Select(e => new EmployeeViewModel()
-        {
-           Id = e.Id,
-           Name = e.FirstName,
-           SecondName = e.SurName,
-           Patronymic = e.Patronymic,
-           Age = e.Age
-        }
-        ));
+        public IActionResult Index() => View(_EmployeesData.GetAll().Select(e => e.ToView()));
 
         public IActionResult Details(int Id)
         {
             var employee = _EmployeesData.GetById(Id);
             if (employee is null)
                 return NotFound();
-            return View(new EmployeeViewModel()
-            {
-                Id = employee.Id,
-                Name = employee.FirstName,
-                SecondName = employee.SurName,
-                Patronymic = employee.Patronymic,
-                Age = employee.Age
-            });
+            return View(employee.ToView());
         }
 
         public IActionResult Create()
@@ -52,13 +38,7 @@ namespace WebStore.Controllers
                 throw new ArgumentNullException(nameof(Employee));
             if (!ModelState.IsValid)
                 return View(Employee);
-            _EmployeesData.Add(new Employee()
-            {
-                SurName = Employee.SecondName,
-                FirstName = Employee.Name,
-                Patronymic = Employee.Patronymic,
-                Age = Employee.Age
-            });
+            _EmployeesData.Add(Employee.FromView());
             _EmployeesData.SaveChanges();
 
             return RedirectToAction("Index");
@@ -75,14 +55,7 @@ namespace WebStore.Controllers
 
             if (employee is null)
                 return NotFound();
-            return View(new EmployeeViewModel()
-            {
-                Id = employee.Id,
-                Name = employee.FirstName,
-                SecondName = employee.SurName,
-                Patronymic = employee.Patronymic,
-                Age = employee.Age
-            });
+            return View(employee.ToView());
         }
         [HttpPost]
         public IActionResult Edit(EmployeeViewModel Employee)
@@ -94,13 +67,7 @@ namespace WebStore.Controllers
 
             var id = Employee.Id;
             if (id == 0)
-                _EmployeesData.Add(new Employee()
-                {
-                    SurName = Employee.SecondName,
-                    FirstName = Employee.Name,
-                    Patronymic = Employee.Patronymic,
-                    Age = Employee.Age
-                });
+                _EmployeesData.Add(Employee.FromView());
             else
                 _EmployeesData.Edit(id, new Employee()
                 {
@@ -124,14 +91,7 @@ namespace WebStore.Controllers
             if (employee is null)
                 return NotFound();
             
-            return View(new EmployeeViewModel()
-            {
-                Id = employee.Id,
-                Name = employee.FirstName,
-                SecondName = employee.SurName,
-                Patronymic = employee.Patronymic,
-                Age = employee.Age
-            });
+            return View(employee.ToView());
         }
 
         public IActionResult DeleteConfirmed(int id)
