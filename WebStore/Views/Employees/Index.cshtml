@@ -7,8 +7,12 @@
 
     <div class="container">
         <h3>@ViewData["title"]</h3>
-        <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
-        <a asp-action="Create" class="btn btn-success">Создать через Create</a>
+        @if (User.IsInRole(WebStore.Domain.Entities.Identity.Role.Administrator))
+        {
+            <a asp-action="Edit" class="btn btn-success">Создать через Edit</a>
+            <a asp-action="Create" class="btn btn-success">Создать через Create</a>
+        }
+
         <hr />
 
         <table class="table table-bordered" id="employees-table">
@@ -20,8 +24,12 @@
                     <th>Отчество</th>
                     <th>Возраст</th>
                     <th>Карточка</th>
-                    <th>Редактировать</th>
-                    <th>Удалить</th>
+                    @if (User.IsInRole(WebStore.Domain.Entities.Identity.Role.Administrator))
+                    {
+                        <th>Редактировать</th>
+                        <th>Удалить</th>
+                    }
+
                 </tr>
             </thead>
             <tbody>
@@ -39,12 +47,16 @@
                     <!--<td>
         <a asp-controller="Employees" asp-action="Edit1" asp-route-Id="@employee.Id">Изменить</a>
     </td>-->
-                    <td>
-                        <a asp-controller="Employees" asp-action="Edit" asp-route-Id="@employee.Id">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Employees" asp-action="Delete" asp-route-Id="@employee.Id" class="text-danger">Delete</a>
-                    </td>
+                    @if (User.IsInRole(WebStore.Domain.Entities.Identity.Role.Administrator))
+                    {
+                        <td>
+                            <a asp-controller="Employees" asp-action="Edit" asp-route-Id="@employee.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Employees" asp-action="Delete" asp-route-Id="@employee.Id" class="text-danger">Delete</a>
+                        </td>
+                    }
+
                 </tr>
                 }
             </tbody>

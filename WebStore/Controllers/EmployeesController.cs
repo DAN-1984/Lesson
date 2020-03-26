@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Data;
+using WebStore.Domain.Entities.Identity;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Mapping;
 using WebStore.Models;
@@ -11,6 +13,7 @@ using WebStore.ViewModels;
 
 namespace WebStore.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmpoyeesData _EmployeesData;
@@ -25,13 +28,15 @@ namespace WebStore.Controllers
                 return NotFound();
             return View(employee.ToView());
         }
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Create()
         {
             return View(new EmployeeViewModel());
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Create(EmployeeViewModel Employee)
         {
             if (Employee is null)
@@ -44,7 +49,7 @@ namespace WebStore.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Edit(int? Id)
         {
             if (Id is null) return View(new EmployeeViewModel());
@@ -58,6 +63,8 @@ namespace WebStore.Controllers
             return View(employee.ToView());
         }
         [HttpPost]
+        [Authorize(Roles = Role.Administrator)]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(EmployeeViewModel Employee)
         {
             if (Employee is null)
@@ -81,7 +88,7 @@ namespace WebStore.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -93,7 +100,7 @@ namespace WebStore.Controllers
             
             return View(employee.ToView());
         }
-
+        [Authorize(Roles = Role.Administrator)]
         public IActionResult DeleteConfirmed(int id)
         {
             _EmployeesData.Delete(id);
