@@ -99,17 +99,21 @@ namespace WebStore.Infrastructure.Services.InCookies
 
         public CartViewModel TransformFromCart()
         {
-            var products = _ProductData.GetProducts(new ProductFilter
+            var cart_items = Cart.Items;
+            var products = _ProductData
+            .GetProducts(new ProductFilter
             {
-                Ids = Cart.Items.Select(item => item.ProductId).ToList()
-            });
-
-            var product_view_models = products.ToView();
+                Ids = cart_items.Select(item => item.ProductId).ToList()
+            })
+            .ToView()
+            .ToDictionary(p => p.Id);
 
             return new CartViewModel
             {
-                Items = Cart.Items.ToDictionary(
-                    item => product_view_models.First(p => p.Id == item.ProductId),
+                Items = Cart.Items
+                .Where(item => products.ContainsKey(item.ProductId))
+                .ToDictionary(
+                    item => products[item.ProductId],
                     item => item.Quantity
                     )
             };
