@@ -14,6 +14,7 @@ using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.services.InMemory;
 using WebStore.Infrastructure.services.InSQL;
 using WebStore.Infrastructure.Services.InCookies;
+using WebStore.Infrastructure.Services.InSQL;
 
 namespace WebStore
 {
@@ -69,6 +70,7 @@ namespace WebStore
                 opt.SlidingExpiration = true;
             });
             services.AddScoped<ICartService, CookiesCartService>();
+            services.AddScoped<IOrderService, SqlOrderService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDBInitializer db)
