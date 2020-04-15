@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <vc:user-info/>
+                    <vc:user-info />
                 </div>
             </div>
         </div>
@@ -79,18 +79,19 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
-                   
-                    <partial name="Partial/_MainMenu"/>
+
+                    <partial name="Partial/_MainMenu" />
 
                 </div>
                 <div class="col-sm-3 my_col" style="display:inline-block;">
-                    <div class="pull-right">
-                        <input type="submit" value="Искать" class="btn btn-default" />
-                    </div>
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" class="" />
-                    </div>
-
+                    <form asp-controller="Search" asp-action="Search" method="post">
+                        <div class="pull-right">
+                            <input type="submit" value="Искать" class="btn btn-default" />
+                        </div>
+                        <div class="search_box pull-right">
+                            <input type="text" placeholder="Search" class="" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

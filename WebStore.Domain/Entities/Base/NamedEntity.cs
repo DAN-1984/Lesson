@@ -8,7 +8,8 @@ namespace WebStore.Domain.Entities.Base
     /// <summary>Именованная сущность</summary>
     public abstract class NamedEntity : BaseEntity, INamedEntity
     {
-        [Required/*, StringLength(250)*/]
+        [Required(ErrorMessage = "Обязательный к заполнению")]
+        [StringLength(50)]
         public string Name { get; set; }
     }
 }

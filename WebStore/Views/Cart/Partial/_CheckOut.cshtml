@@ -36,10 +36,16 @@
                 <div class="total_area">
                     <ul>
                         <li>Налог <span>0</span></li>
-                        <li>Доставка <span>Free</span></li>
+                        <li>Доставка <span>Доставка почтой</span></li>
                         <li>Итого: <span>@sum.ToString("C")</span></li>
                     </ul>
                     <input class="btn btn-default check_out" type="submit" value="Оформить" />
+                </div>
+            }
+            else
+            {
+                <div class="subtotal-area">
+                    <a asp-controller="Catalog" asp-action="Shop" class="btn btn-default check_out">Каталог товаров</a>
                 </div>
             }
         </div>

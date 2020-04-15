@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entities.Orders;
 using WebStore.Infrastructure.Interfaces;
@@ -45,7 +46,7 @@ namespace WebStore.Controllers
             _CartService.RemoveAll();
             return RedirectToAction(nameof(Details));
         }
-
+        [Authorize]
         public async Task<IActionResult> CheckOut(OrderViewModel Model, [FromServices] IOrderService OrderService)
         {
             if (!ModelState.IsValid)
@@ -61,7 +62,7 @@ namespace WebStore.Controllers
 
             return RedirectToAction(nameof(OrderConfirmed), new { id = order.Id });
         }
-
+        [Authorize]
         public IActionResult OrderConfirmed(int id)
         {
             ViewBag.OrderId = id;

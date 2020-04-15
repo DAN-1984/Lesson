@@ -5,14 +5,14 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form method="post" asp-controller="Products" asp-action="Edit" asp-antiforgery="true">
+<form method="post" asp-action="Edit3" asp-route-id="@Model.Id" asp-antiforgery="true">
     <div class="row">
         <div class="col-sm-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="Name" class="sr-only"></label>
-                <input asp-for="Name" class="form-control" placeholder="Название товара" />
+                <input asp-for="Name" class="form-control" placeholder="Название товара"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
@@ -46,10 +46,9 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
         </div>
-        <div class="col-sm-6">     
-                <input class="btn btn-default check_out" type="submit" value="Добавить" />
+        <div class="col-sm-6">
+            <input class="btn btn-default check_out" type="submit" value="Сохранить" />
         </div>
     </div>
 </form>
-
 
