@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<ProductViewModel>
+
 @{
     ViewData["Title"] = "Поиск товаров";
 }
-
-
 
 @using WebStore.Infrastructure.Interfaces
 @using WebStore.Infrastructure.Mapping
@@ -25,8 +24,6 @@
                     <h2 class="title text-center">Товары</h2>
                     @foreach (var product in Model)
                     {
-                        if (product.Name == "Белое платье")
-                        {
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
@@ -56,12 +53,6 @@
                                     </div>
                                 </div>
                             </div>
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
                      }
                 </div><!--features_items-->
 

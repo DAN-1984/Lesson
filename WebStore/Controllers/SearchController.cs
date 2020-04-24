@@ -7,6 +7,7 @@ using WebStore.Domain.Entities;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Mapping;
 using WebStore.ViewModels;
+using WebStore.ViewModels.Search;
 
 namespace WebStore.Controllers
 {
@@ -20,9 +21,9 @@ namespace WebStore.Controllers
             return View();
         }
 
-        public IActionResult Search(IEnumerable<ProductViewModel> product)
+        public IActionResult Search(/*IEnumerable<ProductViewModel> product,*/ string searchString)
         {
-            product = _ProductData.GetProducts().ToView();
+            var product = _ProductData.GetProducts().ToView().Where(s => s.Name.Contains(searchString));
             return View(product);
         }
     }

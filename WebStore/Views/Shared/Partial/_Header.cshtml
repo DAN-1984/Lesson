@@ -84,14 +84,9 @@
 
                 </div>
                 <div class="col-sm-3 my_col" style="display:inline-block;">
-                    <form asp-controller="Search" asp-action="Search" method="post">
-                        <div class="pull-right">
-                            <input type="submit" value="Искать" class="btn btn-default" />
-                        </div>
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" class="" />
-                        </div>
-                    </form>
+
+                    <partial name="Partial/_Search"/>
+                
                 </div>
             </div>
         </div>

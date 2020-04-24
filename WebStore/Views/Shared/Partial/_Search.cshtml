@@ -1,0 +1,10 @@
+﻿<form asp-controller="Search" asp-action="Search" method="post">
+    <div class="pull-right">
+        <input type="submit" value="Искать" class="btn btn-default" />
+    </div>
+    <div class="search_box pull-right">
+        <input name="searchString" required oninvalid="this.setCustomValidity('Пустой поиск')" oninput="setCustomValidity('')" type="search" placeholder="Поиск" class="" />
+        @*<span asp-validation-for="searchString" class="text-danger"></span>*@
+    </div>
+</form>
+
