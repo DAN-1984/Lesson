@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.DAL", "Services\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore", "UI\WebStore\WebStore.csproj", "{CB69E2EB-61BF-4523-BBBB-5B9C9FADBA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.ServiceHosting", "Services\WebStore.ServiceHosting\WebStore.ServiceHosting.csproj", "{C92BEEDE-CC85-41AD-84A6-D9F940E9CE08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.ServiceHosting", "Services\WebStore.ServiceHosting\WebStore.ServiceHosting.csproj", "{C92BEEDE-CC85-41AD-84A6-D9F940E9CE08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Interfaces", "Services\WebStore.Interfaces\WebStore.Interfaces.csproj", "{DF011C98-FCC7-4D42-8A4D-E000DC5B68CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Interfaces", "Services\WebStore.Interfaces\WebStore.Interfaces.csproj", "{DF011C98-FCC7-4D42-8A4D-E000DC5B68CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{58BE77AF-EC96-49D7-B93F-E25B1970817C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{58BE77AF-EC96-49D7-B93F-E25B1970817C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Clients", "Services\WebStore.Clients\WebStore.Clients.csproj", "{993C1B65-C203-431A-88C7-94B91957CDB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{58BE77AF-EC96-49D7-B93F-E25B1970817C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58BE77AF-EC96-49D7-B93F-E25B1970817C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58BE77AF-EC96-49D7-B93F-E25B1970817C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993C1B65-C203-431A-88C7-94B91957CDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993C1B65-C203-431A-88C7-94B91957CDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993C1B65-C203-431A-88C7-94B91957CDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993C1B65-C203-431A-88C7-94B91957CDB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{C92BEEDE-CC85-41AD-84A6-D9F940E9CE08} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
 		{DF011C98-FCC7-4D42-8A4D-E000DC5B68CC} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
 		{58BE77AF-EC96-49D7-B93F-E25B1970817C} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
+		{993C1B65-C203-431A-88C7-94B91957CDB0} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03B48D7A-D1FA-42B8-B4B5-E9BA9125FA87}
