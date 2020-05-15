@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebStore.ServiceHosting.Controllers
 {
-    [Route("api/[values]")]
+    [Route("api/values")]
     //[Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -18,6 +15,7 @@ namespace WebStore.ServiceHosting.Controllers
         //{
 
         //}
+
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get() => __Values;
 
@@ -45,6 +43,7 @@ namespace WebStore.ServiceHosting.Controllers
 
             return Ok();
         }
+
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
