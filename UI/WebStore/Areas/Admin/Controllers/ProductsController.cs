@@ -11,6 +11,7 @@ using WebStore.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using System.ComponentModel.DataAnnotations;
+using WebStore.Infrastructure.Mapping;
 
 namespace WebStore.Areas.Admin.Controllers
 {
@@ -26,12 +27,12 @@ namespace WebStore.Areas.Admin.Controllers
             _db = db;
         }
 
-        public IActionResult Index(/*[FromServices] IProductData Products*/) => View(_ProductData.GetProducts());
+        public IActionResult Index(/*[FromServices] IProductData Products*/) => View(_ProductData.GetProducts().FromDTO());
         
         
         public async Task<IActionResult> Edit(int? id, Product _product)
         {
-            var product = id is null ? new Product() : _ProductData.GetProductById((int)id);
+            var product = id is null ? new Product() : _ProductData.GetProductById((int)id).FromDTO();
             if (_product.Name == null)
             {
                 
@@ -56,13 +57,13 @@ namespace WebStore.Areas.Admin.Controllers
 
         public IActionResult Edit3(int ? id) // Метод редактирования заполняет форму значениями
         {
-            var product = id is null ? new Product() : _ProductData.GetProductById((int)id);
+            var product = id is null ? new Product() : _ProductData.GetProductById((int)id).FromDTO();
             return View(product);
         }
         [HttpPost]
         public async Task<IActionResult> Edit3(int? id, Product _product) // Метод редактирования после заполнения формы
         {
-            var product = id is null ? new Product() : _ProductData.GetProductById((int)id);
+            var product = id is null ? new Product() : _ProductData.GetProductById((int)id).FromDTO();
             if (_product.Name == null)
             {
                
@@ -85,7 +86,7 @@ namespace WebStore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(int id)
         {
-            var product = _ProductData.GetProductById(id);
+            var product = _ProductData.GetProductById(id).FromDTO();
 
             if (product is null)
                 return NotFound();
