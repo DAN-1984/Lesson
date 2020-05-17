@@ -72,12 +72,12 @@ namespace WebStore.Areas.Admin.Controllers
             {
                 product.Name = _product.Name;
                 product.Order = _product.Order;
-                product.SectionId = _product.SectionId;
-                product.BrandId = _product.BrandId;
+                product.Section.Id = _product.SectionId;
+                product.Brand.Id = _product.BrandId.Value;
                 product.ImageUrl = _product.ImageUrl;
                 product.Price = _product.Price;
              
-                //_db.Products.Update(product); Можно не использовать этот метод
+                _db.Products.Update(product); // Можно не использовать этот метод
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction(nameof(Index));
             }
