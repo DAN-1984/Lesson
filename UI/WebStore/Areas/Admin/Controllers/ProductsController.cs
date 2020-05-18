@@ -77,7 +77,7 @@ namespace WebStore.Areas.Admin.Controllers
                 product.ImageUrl = _product.ImageUrl;
                 product.Price = _product.Price;
              
-                _db.Products.Update(product); // Можно не использовать этот метод
+                _db.Products.Update(product);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction(nameof(Index));
             }
