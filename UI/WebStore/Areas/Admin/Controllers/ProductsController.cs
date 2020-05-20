@@ -64,11 +64,7 @@ namespace WebStore.Areas.Admin.Controllers
         public async Task<IActionResult> Edit3(int? id, Product _product) // Метод редактирования после заполнения формы
         {
             var product = id is null ? new Product() : _ProductData.GetProductById((int)id).FromDTO();
-            if (_product.Name == null)
-            {
-               
-            }
-            else
+            if (_product.Name != null)
             {
                 product.Name = _product.Name;
                 product.Order = _product.Order;
@@ -76,7 +72,7 @@ namespace WebStore.Areas.Admin.Controllers
                 product.Brand.Id = _product.BrandId.Value;
                 product.ImageUrl = _product.ImageUrl;
                 product.Price = _product.Price;
-             
+
                 _db.Products.Update(product);
                 await _db.SaveChangesAsync().ConfigureAwait(false);
                 return RedirectToAction(nameof(Index));
