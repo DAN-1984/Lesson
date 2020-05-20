@@ -1,15 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
 using WebStore.Domain.DTO.Products;
 using WebStore.Domain.Entities;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Mapping;
+using WebStore.Interfaces.Services;
+using WebStore.Services.Mapping;
 
-namespace WebStore.Infrastructure.services.InSQL
+namespace WebStore.Services.Products.InSQL
 {
     public class SqlProductData : IProductData
     {
@@ -28,8 +28,8 @@ namespace WebStore.Infrastructure.services.InSQL
         public IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null)
         {
             IQueryable<Product> query = _db.Products
-                .Include(product => product.Section)
-                .Include(product => product.Brand);
+               .Include(product => product.Section)
+               .Include(product => product.Brand);
 
             if (Filter?.BrandId != null)
                 query = query.Where(product => product.BrandId == Filter.BrandId);
@@ -41,8 +41,8 @@ namespace WebStore.Infrastructure.services.InSQL
                 query = query.Where(product => Filter.Ids.Contains(product.Id));
 
             return query
-                .AsEnumerable()
-                .ToDTO();
+               .AsEnumerable()
+               .ToDTO();
         }
 
         public ProductDTO GetProductById(int id) => _db.Products
