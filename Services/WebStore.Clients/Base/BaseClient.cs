@@ -31,7 +31,7 @@ namespace WebStore.Clients.Base
 
         protected T Get<T>(string url) /*where T : new()*/ => GetAsync<T>(url).Result;
 
-        protected async Task<T> GetAsync<T>(string url, CancellationToken Cancel = default) // where T : new()
+        protected async Task<T> GetAsync<T>(string url, CancellationToken Cancel = default)// where T : new()
         {
             var response = await _Client.GetAsync(url, Cancel);
             return await response.EnsureSuccessStatusCode().Content.ReadAsAsync<T>(Cancel);
