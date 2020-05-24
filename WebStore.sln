@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Interfaces", "Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Services", "Services\WebStore.Services\WebStore.Services.csproj", "{58BE77AF-EC96-49D7-B93F-E25B1970817C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Clients", "Services\WebStore.Clients\WebStore.Clients.csproj", "{993C1B65-C203-431A-88C7-94B91957CDB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Clients", "Services\WebStore.Clients\WebStore.Clients.csproj", "{993C1B65-C203-431A-88C7-94B91957CDB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.Logger", "Common\WebStore.Logger\WebStore.Logger.csproj", "{EF93C59C-F9C7-4073-8389-101B4630D37E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{993C1B65-C203-431A-88C7-94B91957CDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{993C1B65-C203-431A-88C7-94B91957CDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{993C1B65-C203-431A-88C7-94B91957CDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF93C59C-F9C7-4073-8389-101B4630D37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF93C59C-F9C7-4073-8389-101B4630D37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF93C59C-F9C7-4073-8389-101B4630D37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF93C59C-F9C7-4073-8389-101B4630D37E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{DF011C98-FCC7-4D42-8A4D-E000DC5B68CC} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
 		{58BE77AF-EC96-49D7-B93F-E25B1970817C} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
 		{993C1B65-C203-431A-88C7-94B91957CDB0} = {2B41114D-B5DD-425E-9F94-C1992AAD904C}
+		{EF93C59C-F9C7-4073-8389-101B4630D37E} = {4692FD3F-149D-4AEB-ABF5-472B78A5CFA4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03B48D7A-D1FA-42B8-B4B5-E9BA9125FA87}
