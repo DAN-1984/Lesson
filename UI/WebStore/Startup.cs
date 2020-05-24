@@ -22,6 +22,7 @@ using WebStore.Infrastructure.Services.InCookies;
 using WebStore.Interfaces.Api;
 using WebStore.Services.Products.InSQL;
 using WebStore.Logger;
+using WebStore.Infrastructure.Middleware;
 
 namespace WebStore
 {
@@ -123,6 +124,8 @@ namespace WebStore
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

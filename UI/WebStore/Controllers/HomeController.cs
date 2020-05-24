@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace WebStore.Controllers
 {
@@ -9,6 +10,8 @@ namespace WebStore.Controllers
             ViewData["title"] = "Главная";
             return View(); 
         }
+
+        public IActionResult Throw(string id) => throw new ApplicationException(id);
 
         public IActionResult SomeAction() => View();
 
