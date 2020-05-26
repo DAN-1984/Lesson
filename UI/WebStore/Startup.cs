@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using WebStore.Clients.Employees;
 using WebStore.Clients.Identity;
@@ -20,6 +21,8 @@ using WebStore.Infrastructure.services.InMemory;
 using WebStore.Infrastructure.Services.InCookies;
 using WebStore.Interfaces.Api;
 using WebStore.Services.Products.InSQL;
+using WebStore.Logger;
+using WebStore.Infrastructure.Middleware;
 
 namespace WebStore
 {
@@ -103,8 +106,9 @@ namespace WebStore
             services.AddScoped<IValueServices, ValuesClient>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*, WebStoreDBInitializer db*/)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*, WebStoreDBInitializer db*/, ILoggerFactory log)
         {
+            log.AddLog4Net();
             //db.Initialize();
 
             if (env.IsDevelopment())
@@ -120,6 +124,8 @@ namespace WebStore
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
