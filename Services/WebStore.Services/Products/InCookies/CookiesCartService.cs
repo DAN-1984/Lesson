@@ -10,6 +10,7 @@ using WebStore.Models;
 
 namespace WebStore.Infrastructure.Services.InCookies
 {
+    [Obsolete("Использовать сервисы CookiesCartStore и CartService", true)]
     public class CookiesCartService : ICartService
     {
         private readonly string _CartName;

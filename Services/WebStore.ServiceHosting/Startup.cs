@@ -22,6 +22,9 @@ using WebStore.Infrastructure.Services.InCookies;
 using WebStore.Infrastructure.Services.InSQL;
 using WebStore.Services.Products.InSQL;
 using WebStore.Logger;
+using WebStore.Interfaces.Services;
+using WebStore.Services.Products.InCookies;
+using WebStore.Services.Products;
 
 namespace WebStore.ServiceHosting
 {
@@ -58,7 +61,9 @@ namespace WebStore.ServiceHosting
             });
             services.AddSingleton<IEmpoyeesData, InMemoryEmployeesData>();
             services.AddScoped<IProductData, SqlProductData>();
-            services.AddScoped<ICartService, CookiesCartService>();
+            //services.AddScoped<ICartService, CookiesCartService>();
+            services.AddScoped<ICartStore, CookiesCartStore>();
+            services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, SqlOrderService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
