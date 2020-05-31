@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.ViewModels;
 using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces.Services;
 using WebStore.ViewModels;
 
 namespace WebStore.Components
@@ -14,7 +14,7 @@ namespace WebStore.Components
         private readonly IProductData _ProductData;
         public SectionsViewComponent(IProductData ProductData) => _ProductData = ProductData;
 
-        public IViewComponentResult Invoke(string SectionId) 
+        public IViewComponentResult Invoke(string SectionId)
         {
             var section_id = int.TryParse(SectionId, out var id) ? id : (int?)null;
 
@@ -27,11 +27,6 @@ namespace WebStore.Components
                 ParentSectionId = parent_section_id
             });
         }
-
-        //public async Task<IViewComponentResult> InvokeAsync()
-        //{
-
-        //}
 
         private IEnumerable<SectionViewModel> GetSections(int? SectionId, out int? ParentSectionId)
         {
