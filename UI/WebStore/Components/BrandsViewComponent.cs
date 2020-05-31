@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebStore.Domain.ViewModels;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.ViewModels;
 
@@ -14,7 +15,12 @@ namespace WebStore.Components
 
         public BrandsViewComponent(IProductData ProductData) => _ProductData = ProductData;
 
-        public IViewComponentResult Invoke(string BrandId) => View(GetBrands());
+        public IViewComponentResult Invoke(string BrandId) =>
+            View(new BrandCompleteViewModel
+            {
+                Brands = GetBrands(),
+                CurrentBrandId = int.TryParse(BrandId, out var id) ? id : (int?)null
+            });
 
         public IEnumerable<BrandViewModel> GetBrands() => _ProductData
            .GetBrands()
