@@ -58,9 +58,9 @@ namespace WebStore.Clients.Base
 
         protected HttpResponseMessage Delete(string url) => DeleteAsync(url).Result;
 
-        protected async Task<HttpResponseMessage> DeleteAsync(string url)
+        protected async Task<HttpResponseMessage> DeleteAsync(string url, CancellationToken Cancel = default)
         {
-            return await _Client.DeleteAsync(url);
+            return await _Client.DeleteAsync(url, Cancel);
         }
 
         //~BaseClient() => Dispose(false);
