@@ -15,7 +15,7 @@
 
                 @inject IProductData  catalog;
 
-                <partial name="Partial/_FeaturesItems" model="@catalog.GetProducts().FromDTO().ToView()" />
+                <partial name="Partial/_FeaturesItems" model="@catalog.GetProducts(new ProductFilter { Page = 1, PageSize = 10}).Products.FromDTO().ToView()" />
 
                 <partial name="Partial/_CategoryTab" />
 

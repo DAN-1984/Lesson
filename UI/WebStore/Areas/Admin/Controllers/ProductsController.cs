@@ -27,7 +27,7 @@ namespace WebStore.Areas.Admin.Controllers
             _db = db;
         }
 
-        public IActionResult Index(/*[FromServices] IProductData Products*/) => View(_ProductData.GetProducts().FromDTO());
+        public IActionResult Index(/*[FromServices] IProductData Products*/) => View(_ProductData.GetProducts().Products.FromDTO());
         
         
         public async Task<IActionResult> Edit(int? id, Product _product)
