@@ -10,7 +10,9 @@ namespace WebStore.Infrastructure.Interfaces
         /// <summary>Получить все секции</summary>
         /// <returns>Перечисление секций каталога</returns>
         IEnumerable<SectionDTO> GetSections();
+
         SectionDTO GetSectionById(int id);
+
         BrandDTO GetBrandById(int id);
         /// <summary>Получить все бренды</summary>
         /// <returns>Перечисление брендов каталога</returns>
@@ -19,7 +21,7 @@ namespace WebStore.Infrastructure.Interfaces
         /// <summary>Товары из каталога</summary>
         /// <param name="Filter">Критерий поиска/фильтрации</param>
         /// <returns>Искомые товары из каталога товаров</returns>
-        IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null);
+        PageProductsDTO GetProducts(ProductFilter Filter = null);
 
         /// <summary>Получить товар по идентификатору</summary>
         /// <param name="id">Идентификатор требуемого товара</param>

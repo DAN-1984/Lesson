@@ -19,10 +19,10 @@ namespace WebStore.Clients.Products
 
         public ProductDTO GetProductById(int id) => Get<ProductDTO>($"{_ServiceAddress}/{id}");
 
-        public IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null) =>
+        public PageProductsDTO GetProducts(ProductFilter Filter = null) =>
             Post(_ServiceAddress, Filter ?? new ProductFilter())
                .Content
-               .ReadAsAsync<IEnumerable<ProductDTO>>()
+               .ReadAsAsync<PageProductsDTO>()
                .Result;
 
         public IEnumerable<SectionDTO> GetSections() => Get<IEnumerable<SectionDTO>>($"{_ServiceAddress}/sections");

@@ -23,7 +23,7 @@ namespace WebStore.Controllers
 
         public IActionResult Search(/*IEnumerable<ProductViewModel> product,*/ string searchString)
         {
-            var product = _ProductData.GetProducts().FromDTO().ToView().Where(s => s.Name.Contains(searchString));
+            var product = _ProductData.GetProducts().Products.FromDTO().ToView().Where(s => s.Name.Contains(searchString));
             return View(product);
         }
     }
